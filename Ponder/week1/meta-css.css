@@ -1,0 +1,40 @@
+body {
+    background-color: lightgrey;
+    font-size: 20px;
+}
+
+#content {
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+img {
+    max-width: 70%;
+    display: block;
+    margin: 0 auto; 
+}
+
+p {
+    color: blue;
+}
+
+h1, h2, p {
+    text-align: center;
+}
+
+.list {
+    list-style-type: none;
+}
+
+hr {
+    height: 3px;
+    background-color: blue;
+    width: 70%;
+    margin: 30px auto;
+}
+
+#topics {
+    width: 55%;
+    margin: 0 auto;
+}

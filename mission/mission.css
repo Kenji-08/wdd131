@@ -1,0 +1,41 @@
+* {
+    font-size: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+}
+
+h2 {
+    color: blue;
+    padding-bottom: 0;
+    text-align: center;
+}
+
+hr {
+    padding: 0;
+    margin-bottom: 50px;
+}
+
+p, ol{
+    max-width: 70%;
+}
+
+p:last-of-type {
+    padding-top: 40px;
+    padding-bottom: 0;
+}
+
+ol * {
+    padding: 10px;
+}
+
+img {
+    display: block;
+    max-width: 30%;
+    margin: 0 auto;
+}

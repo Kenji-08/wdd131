@@ -35,3 +35,9 @@ selectElem.addEventListener('change', function(){
 
 })
                 
+
+// const image = document.querySelector('img');
+// image.setAttribute('src', 'mission\byui-logo-blue.webp')
+// image.setAttribute('alt', 'new logo baby');
+
+document.body.className = 'blue';

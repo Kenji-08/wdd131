@@ -7,7 +7,7 @@ function changeTheme() {
     let current = selectElem.value;
     if (current === 'Dark') {
         document.body.style.color = "white";
-        document.body.style.backgroundColor = "black";
+        document.body.style.backgroundColor = "#333";
         document.getElementById("content").style.borderColor = "white";
         document.getElementById("logo").src = "byui-logo-white.png";
 

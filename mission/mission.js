@@ -8,11 +8,13 @@ function changeTheme() {
     if (current === 'Dark') {
         document.body.style.color = "white";
         document.body.style.backgroundColor = "black";
+        document.getElementById("content").style.borderColor = "white";
         document.getElementById("logo").src = "byui-logo-white.png";
 
     } else if (current === 'Light') {
         document.body.style.color = "black";
         document.body.style.backgroundColor = "white";
+        document.getElementById("content").style.borderColor = "black";
         document.getElementById("logo").src = "byui-logo-blue.webp";
     }
 }

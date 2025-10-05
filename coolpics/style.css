@@ -20,6 +20,10 @@ nav {
 
 main h1{
     font-size: 1.5em;
+    background-color: lightgray;
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 40px;
 }
 
 .menu-btn {
@@ -32,11 +36,14 @@ main h1{
     width: 200px;
     height: 200px;
     object-fit: cover;
-    box-shadow: -5px 5px 10px gray;
+    box-shadow: 5px 5px 10px gray;
+    margin-bottom: 40px;
+    background-color: white;
 }
 
 #images {
     padding-bottom: 20px;
+    background-color: lightgray;
 }
 
 footer {

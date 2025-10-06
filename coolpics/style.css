@@ -14,7 +14,7 @@ header {
     padding: 10px;
 }
 
-nav {
+nav, .hidden {
     display: none;
 }
 
@@ -26,7 +26,7 @@ main h1{
     padding-bottom: 40px;
 }
 
-.menu-btn {
+#menu-btn {
     padding: 10px 100px 10px 100px;
 }
 .image {
@@ -61,11 +61,11 @@ footer {
     #images {
         grid-template-columns: 1fr 1fr 1fr;
     }
-    .menu-btn {
+    #menu-btn {
         display: none;
     }
 
-    nav {
+    nav, .hidden {
         display: inline-block;
     }
 }

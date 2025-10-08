@@ -64,13 +64,11 @@ nav a:hover {
 .change .bar3 {
   transform: translate(0, -11px) rotate(45deg);
 }
-          
 
 footer {
     text-align: center;
     margin-bottom: 0;
 }
-    
 
 @media screen and (min-width: 700px) {
     main {

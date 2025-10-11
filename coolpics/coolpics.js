@@ -32,3 +32,22 @@ modal.addEventListener('click', (event) => {
     }
 });
           
+const menuButton = document.querySelector("#menu-btn");
+function toggleMenu() {
+  const menu = document.querySelector("nav");
+  menu.classList.toggle("hide");
+}
+
+menuButton.addEventListener("click", toggleMenu);
+
+function handleResize() {
+  const menu = document.querySelector("nav");
+  if (window.innerWidth > 1000) {
+    menu.classList.remove("hide");
+  } else {
+    menu.classList.add("hide");
+  }
+}
+
+handleResize();
+window.addEventListener("resize", handleResize);

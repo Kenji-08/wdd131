@@ -13,7 +13,8 @@ dialog img {
 dialog {
     width: 100%;
     height: 100%;
-    margin: 0 auto;
+    padding: 2vw;
+    margin: auto;
     background-color: rgba(0,0,0,.75);
 }
 .close-viewer {

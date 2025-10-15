@@ -1,0 +1,62 @@
+header h1{
+    text-align: center;
+}
+
+nav {
+    margin: 0 auto;
+    justify-items: center;
+    border-top: 2px solid gold;
+    border-bottom: 2px solid gold;
+    text-align: right;
+    padding-right: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+nav a {
+    padding-left: 30px;
+    text-decoration: none;
+    color: crimson;
+}
+
+.book {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.details {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.book h2 {
+    color: crimson;
+}
+
+.description {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.book img {
+    display: block;
+    margin: 0 auto;
+}
+
+footer {
+    text-align: center;
+    border-top: 2px solid gold;
+}
+
+@media (min-width: 1000px) {
+    .book {
+        grid-template-columns: 1fr 4fr;
+        padding-left: 10vw;
+        padding-right: 10vw;
+        padding: 50px 10vw;
+    }
+
+    .details {
+        border-right: 2px solid gold;
+    }
+}

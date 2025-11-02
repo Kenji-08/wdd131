@@ -1,13 +1,11 @@
-body {
-    padding: 20px;
-}
-
 #cardForm {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 1fr 1.5fr 1fr 0.5fr;
     font-size: 1.2em;
+    padding: 40px;
+    width: 67%;
 }
 
 #cardFront {
@@ -20,7 +18,7 @@ body {
     grid-gap: 10px;
     background-color: lightgray;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 5px 5px 15px black;
     z-index: 2;
 }
@@ -117,7 +115,8 @@ button {
 .errors {
     white-space: pre-line; /*needed for 2 errors to be on separate lines*/
     color: red;
-    padding: 30px;
+    padding-right: 20vw;
+    font-size: 30px;
     float: right;
 }
           

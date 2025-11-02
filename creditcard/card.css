@@ -1,0 +1,123 @@
+body {
+    padding: 20px;
+}
+
+#cardForm {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 1fr 1.5fr 1fr 0.5fr;
+    font-size: 1.2em;
+}
+
+#cardFront {
+    grid-column: 1/3;
+    grid-row: 1/3;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px;
+    background-color: lightgray;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 5px 5px 15px black;
+    z-index: 2;
+}
+
+#TOTAL {
+    grid-column: 0/1;
+    grid-row: 1/2;
+}
+
+#cardEmoji {
+    margin: 0;
+    padding: 0;
+    font-size: 5em;
+    text-align: right;
+}
+
+#number {
+    grid-column: 0/1;
+    grid-row: 2/3;
+}
+
+#cardHolder {
+    grid-row: 3/4;
+}
+
+#cardExpiration {
+    display:inline;
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+#cardExpiration input {
+    width: 45%;
+}
+
+#cardBack {
+    grid-column: 2/4;
+    grid-row: 2/4;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: .5fr .5fr 200px;
+    background-color: lightgray;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px black;
+    margin-bottom: 20px;
+}
+
+
+
+hr {
+    grid-column: 1/3;
+    border: 30px solid black;
+    margin: 1em 0;
+
+}
+
+#cvvContainer {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+
+#cvv {
+    height: 5vw;
+    width: 90%;
+}
+
+.errors {
+    white-space: pre-line; /*needed for 2 errors to be on separate lines*/
+    color: red;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc; /* Add a border to make it visually consistent */
+    border-radius: 4px;
+}
+button {
+    grid-column: 3/4;
+    grid-row: 4/5;
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px black;
+}
+.errors {
+    white-space: pre-line; /*needed for 2 errors to be on separate lines*/
+    color: red;
+    padding: 30px;
+    float: right;
+}
+          

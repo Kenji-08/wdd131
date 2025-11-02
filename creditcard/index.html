@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="card.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="card.js" defer></script>
+    <title>Credit Card</title>
+</head>
+<body>
+    <form id="cardForm" action="completed.html" method="post">
+        <div id="cardFront">
+            <p id="TOTAL">TOTAL: $199</p>
+            <p id="cardEmoji">💳</p>
+            <div id="number">
+                <label for="cardNumber">CARD NUMBER</label>
+                <input
+                    type="text"
+                    id="cardNumber"
+                    name="cardNumber"
+                    pattern="[0-9]{16}"
+                    placeholder="1234 5678 9012 3456"
+                    required
+                />
+            </div>
+            <div id="cardHolder">
+                <label for="fullName">CARD HOLDER</label>
+                <input type="text" id="fullName" name="fullName" placeholder="John Doe" required>
+            </div>
+            <div id="cardExpiration">
+                <label for="expirationDate">EXPIRATION</label>
+                <input type='text' id='month' name="expMonth" placeholder="MM" aria-labelledby="expirationDate">
+                <input type='text' id='year' name="expYear" placeholder="YY" aria-labelledby="expirationDate">
+            </div>
+        </div>
+        <div id="cardBack">
+            <hr>
+            <div id="cvvContainer">
+                <label for="cvv">CVC/CVV</label>
+                <input type="text" id="cvv" name="cvv" pattern="[0-9]{3}" placeholder="xxx" required>
+            </div>
+        </div>
+        
+        <button type="submit" id="submitBtn">Submit</button>
+    </form>
+    <section class="errors"></section>
+</div>
+</body>
+</html>

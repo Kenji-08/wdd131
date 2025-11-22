@@ -6,14 +6,14 @@
     
     <!-- Open Graph (Facebook, LinkedIn, etc.) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Your Title">
+    <meta property="og:title" content="Recipes">
     <meta property="og:description" content="Your Description">
     <meta property="og:url" content="Your URL">
     <meta property="og:image" content="social-preview-image.png">
 
     <!-- X Card -->
     <meta name="twitter:card" content="Social Preview Image">
-    <meta name="twitter:title" content="Your Title">
+    <meta name="twitter:title" content="Recipes">
     <meta name="twitter:description" content="Your Description">
     <meta name="twitter:image" content="social-preview-image.png">
 
@@ -25,6 +25,7 @@
                 
     <title>Recipes</title>
     <link rel="stylesheet" href="recipes.css">
+    <script src="recipes.js" defer></script>
 </head>
 <body>
     <nav>
@@ -33,37 +34,13 @@
             <h1>RecipeBook</h1>
         </div>
         <div class="search">
-            <input type="text" placeholder="Find a recipe">
+            <input type="text" id="search" placeholder="Find a recipe">
             <button type="submit">Search</button>
         </div>
 
         <hr>
     </nav>
     <main>
-        <div class="recipe-container">
-            <img src="images/apple-crisp.jpg" alt="Image of a apple crisp">
-            <div class="recipe-content">
-                <p class="type">dessert</p>
-                <h2>Apple Crisp</h2>
-                
-                <span
-                class="rating"
-                role="img"
-                aria-label="Rating: 4 out of 5 stars"
-                >
-                <span aria-hidden="true" class="icon-star">⭐</span>
-                <span aria-hidden="true" class="icon-star">⭐</span>
-                <span aria-hidden="true" class="icon-star">⭐</span>
-                <span aria-hidden="true" class="icon-star-empty">⭐</span>
-                <span aria-hidden="true" class="icon-star-empty">☆</span>
-                </span>
-    
-                <p class="description">
-                    This apple crisp recipe is a simple yet delicious fall dessert that's reat served warm with vanila ice cream.
-                </p>
-            </div>
-                
-        </div>
     </main>
     <footer>
         <div class="social">

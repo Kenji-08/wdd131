@@ -1,0 +1,89 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary-color: #18e8a8;
+    --secondary-color: #111a28;
+    --accent1: #648381;
+    --accent2: #f24333;
+}
+
+.primary {
+    color: var(--primary-color);
+}
+
+.secondary {
+    color: var(--secondary-color);
+}
+
+.accent1 {
+    color: var(--accent1);
+}
+
+.accent2 {
+    color: var(--accent2);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1, p {
+    color: var(--primary-color);
+    text-align: center;
+}
+
+h1 {
+    font-size: 4em;
+    padding-bottom: 30vw;
+}
+
+#play-btn {
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+    padding: 20px;
+    width: 20vw;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    background-color: var(--secondary-color);
+    color: #18e8a8;
+}
+
+main p {
+    padding-top: 100px;
+}
+
+main {
+    background-image: url(../images/darknest-dungeon-ruins-door-mobile.jpg);
+    /* background-repeat: no-repeat; */
+    background-position: center;
+    padding: 10vw;
+    padding-bottom: 40vw;
+    background-position-x: center;
+    background-position-y: -50px;
+}
+
+footer {
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 10px;
+}
+
+footer a, footer p{
+    padding: 10px 20px;
+    color: var(--secondary-color);
+}
+
+@media screen and (min-width: 500px) {
+    
+    main {
+        background-image: url(../images/darknest-dungeon-ruins-door.jpg);
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    
+}

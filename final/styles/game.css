@@ -63,6 +63,7 @@ nav img {
 .enemy-img {
     border: 2px solid var(--accent2);
     width: 70vw;
+    max-height: 200px;
     position:absolute;
     z-index: 1;
     left: 50%;

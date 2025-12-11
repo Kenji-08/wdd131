@@ -34,6 +34,20 @@ nav {
     font-size: 1.5em;
     background-color: var(--accent1);
     justify-content: space-evenly;
+    color: var(--primary-color);
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 nav img {

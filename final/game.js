@@ -623,4 +623,4 @@ let scene = opening;
 runScene(scene);
 
 player.currentEnemy = "opening";
-console.log("Starting enemy: " + player.currentEnemy);
+// console.log("Starting enemy: " + player.currentEnemy);

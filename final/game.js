@@ -306,7 +306,7 @@ let oni = {
 
 let ally = {
     bg: 'dungeon-bg-large.jpg',
-    img: 'rsz_kodama.png',
+    img: 'rsz_kodama.jpg',
     alt: 'Picture of a Kodama',
     name: 'Kodama',
     health: '20',

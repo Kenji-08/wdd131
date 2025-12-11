@@ -52,6 +52,13 @@ h1 {
     color: #18e8a8;
 }
 
+#play-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    border: 2px solid var(--secondary-color);
+}
+
 main p {
     padding-top: 100px;
 }
@@ -81,9 +88,45 @@ footer a, footer p{
     
     main {
         background-image: url(../images/darknest-dungeon-ruins-door.jpg);
+        padding: 30px;
+        background-position-y: -150px;
+    }
+
+    nav {
+        height: 7vh;
+        padding: 20px;
+    }
+
+    nav img {
+        height: 70px;
+    }
+
+    h1 {
+        padding-top: 50px;
+        padding-bottom: 250px;
+        height: 0;
+        font-size: 3.5em;
+    }
+
+    #play-btn {
+        width: 30vw;
+        font-size: 1.8em;
+    }
+
+    main p {
+        font-size: 1.4em;
+        padding-bottom: 200px;
     }
 }
 
 @media screen and (min-width: 1000px) {
-    
+    main {
+        background-position-y: -170px;
+        padding: 5px;
+    }
+
+    nav {
+        justify-content: left;
+        gap: 50px;
+    }
 }

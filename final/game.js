@@ -1,38 +1,47 @@
 // TODO:
 // Get smaller images for performance
+// Get images for ally and boss and boss bg
 // Make it so the enemy container border turns red when fighting grey when not
 // Decide if I want nav to be dropdown or not
+// Make accessible (aria labels, alt text, etc)
+// Do a final test
 
 let player = {
     name: 'player',
-    health: 100,
-    maxHealth: 100,
+    health: 120,
+    maxHealth: 120,
     runAttempts: 3,
-    potions: 0,
-    currentEnemy: 'opening', // Change when needed
+    potions: 1,
+    currentEnemy: 'opening',
     pure: true,
     attack(amt){
-        if (this.health - amt <= 0){
-            alert("You have been defeated! Game over.");
-            location.reload();
-        }
+        // apply damage
         this.health -= amt;
-        if (this.health < 0){this.health = 0;}
+        if (this.health < 0) { this.health = 0; }
+
+        // update UI
         document.querySelector(".player-health").innerHTML = "HP: " + this.health;
+
+        // check for death
+        if (this.health <= 0) {
+            alert("You have been defeated... Game over.");
+            window.location.href = "index.html";
+        }
     },
     heal(){
         if (this.potions > 0){
-            this.health += 20; this.potions-=1;
+            this.health += 30; this.potions-=1;
+            if (this.health > this.maxHealth) this.health = this.maxHealth;
             document.querySelector(".potions").innerHTML = "Potions: " + this.potions;
         }
         else{alert("No more potions left!");}
     },
     run(){
         if (this.runAttempts > 0){
-            chance = getRandomInt(0,2);
+            constchance = getRandomInt(0,2);
             if (chance === 0){
                 alert("You successfully ran away!");
-                this.runAttempts = 3; // TODO: might remove
+                this.runAttempts = 3;
                 advanceScene();
             }
             else{
@@ -47,15 +56,15 @@ let player = {
 }
 
 function getRandomInt(min, max) {
-const minCeiled = Math.ceil(min);
-const maxFloored = Math.floor(max);
-return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
 }
 
 function advanceScene(){
     console.log("current enemy: " + player.currentEnemy);
     player.runAttempts = 3;
-    player.potions += 2;
+    player.potions += 1;
     player.health = player.maxHealth;
 
     switch(player.currentEnemy){
@@ -174,18 +183,18 @@ let kitsune = {
         if (this.dialogueIndex < this.dialogue.length) {
             return;
         }
-
         else {advanceScene();}
     }
-}
+};
 
 let pretender = {
     bg: 'dungeon-bg-large.jpg',
     img: 'kappa-large.svg',
     name: 'Shiro',
     health: '100',
+    enemyHasActed: false,
     dialogue: pretenderInteractions.map(i => i.text),
-    dialogueIndex: -1,
+    dialogueIndex: 0,
     nextDialogue() {
         this.dialogueIndex++;
 
@@ -193,20 +202,23 @@ let pretender = {
             return;
         }
 
+        this.enemyHasActed = false;
         togglePlayerAll();
         connectActions(pretender);
         document.querySelector(".next-btn").classList.add("hidden");
     },
     attack(amt){
-        if (this.health - amt > 0){
-            toggleFightOn("Haha… I knew you'd try that!");
-            this.health -= amt;
-            player.attack(15);
-            document.querySelector(".enemy-health").innerHTML = "HP: " + this.health;
+        // If player attacks BEFORE enemyHasActed, that is considered "attacking first" => breaks purity
+        if (!this.enemyHasActed) {
+            player.brokenPurityCount += 1;
+        }
 
-            if (this.health === 80 && player.pure) {
-                player.pure = false;
-            }
+        if (this.health - amt > 0){
+            toggleFightOn("You strike the pretender!");
+            this.health -= amt;
+            // pretender counterattacks lightly
+            player.attack(10);
+            document.querySelector(".enemy-health").innerHTML = "HP: " + this.health;
         }
         else{
             toggleFightOff("Shiro was defeated!");
@@ -215,45 +227,53 @@ let pretender = {
         }
     },
     reason(){
-        toggleFightOn("Of course! Let me just-, [The yokai backstabs you] You're too trusting!")
-        player.attack(30);
+        // mark that enemy acted first in this branch
+        this.enemyHasActed = true;
+        toggleFightOn("Of course! Let me just— [The yokai backstabs you] You're too trusting!");
+        player.attack(15);
     },
     playerHealed(){
-        toggleFightOn("Nice. You won't need that for long.")
-        player.attack(30);
+        this.enemyHasActed = true;
+        toggleFightOn("Nice. You won't need that for long.");
+        player.attack(15);
     },
     playerRan(){
+        this.enemyHasActed = true;
         toggleFightOn("Going somewhere?");
-        player.attack(40);
+        player.attack(20);
         player.run();
     }
-}
-// TODO: fix death message not showing up
+};
+
 let oni = {
     bg: 'dungeon-bg-large.jpg',
     img: 'oni-large.jpg',
     alt: '',
     name: 'Oni',
     health: '150',
+    enemyHasActed: false,
     dialogue: oniInteractions.map(i => i.text),
     dialogueIndex: 0,
     nextDialogue(){
         this.dialogueIndex++;
-
         if (this.dialogueIndex < this.dialogue.length) {
             return;
         }
-
+        
+        this.enemyHasActed = true;
         togglePlayerAll();
         connectActions(oni);
         document.querySelector(".next-btn").classList.add("hidden");
-        player.attack(20);
+        
+        player.attack(15);
     },
     attack(amt){
+        // Oni attacks first so player maintains purity
         if (this.health - amt > 0){
             toggleFightOn("RAAAAAAAAAHHHHHH!!!!!");
             this.health -= amt;
-            player.attack(10);
+            
+            player.attack(8);
             document.querySelector(".enemy-health").innerHTML = "HP: " + this.health;
         }
         else{
@@ -263,26 +283,32 @@ let oni = {
         }
     },
     reason(){
-        toggleFightOn("RRRRAAAHHH!!!")
-        player.attack(30);
-    },
-    playerHealed(){
-        toggleFightOn("RAH!AAHHH!!!");
+        
+        this.enemyHasActed = true;
+        toggleFightOn("RRRRAAAHHH!!!");
         player.attack(15);
     },
+    playerHealed(){
+        
+        this.enemyHasActed = true;
+        toggleFightOn("RAH!AAHHH!!!");
+        player.attack(10);
+    },
     playerRan(){
+        this.enemyHasActed = true;
         toggleFightOn("You can't escape me!");
-        player.attack(40);
+        player.attack(20);
         player.run();
     }
 }
 
 let ally = {
     bg: 'dungeon-bg-large.jpg',
-    img: '',
+    img: 'kodama-large.png',
     alt: '',
     name: 'Kodama',
     health: '20',
+    enemyHasActed: false,
     dialogue: allyInteractions.map(i => i.text),
     dialogueIndex: 0,
     nextDialogue(){
@@ -292,17 +318,19 @@ let ally = {
             return;
         }
 
+        this.enemyHasActed = false;
         togglePlayerAll();
         connectActions(ally);
         document.querySelector(".next-btn").classList.add("hidden");
     },
     attack(amt){
+        player.pure = false;
+
         if (this.health - amt > 0){
             toggleFightOn("");
             this.health -= amt;
-            player.attack(10);
+            player.attack(6);
             document.querySelector(".enemy-health").innerHTML = "HP: " + this.health;
-                player.pure = false;
         }
         else{
             toggleFightOff("\'...I see...\' Kodama was defeated!");
@@ -320,17 +348,19 @@ let ally = {
         toggleFightOn("Take your time. I will wait.");
     },
     playerRan(){
-        toggleFightOn("Go if you must. I wish you safety!");
-        player.run();
+        toggleFightOff("Go if you must. I wish you safety!");
+        advanceScene();
+        this.dialogueIndex = this.dialogue.length;
     }
 }
 
 let boss = {
-    bg: '',
-    img: '',
+    bg: 'darknest-dungeon-ruins-door.jpg',
+    img: 'tengu-large.jpg',
     alt: '',
     name: 'Tengu',
     health: '200',
+    enemyHasActed: false,
     dialogue: bossInteractions.map(i => i.text),
     dialogueIndex: 0,
     nextDialogue(){
@@ -340,6 +370,7 @@ let boss = {
             return;
         }
 
+        this.enemyHasActed = false;
         togglePlayerAll();
         connectActions(boss);
         document.querySelector(".next-btn").classList.add("hidden");
@@ -347,30 +378,34 @@ let boss = {
 
     },
     attack(amt){
+        player.pure = false;
+
         if (this.health - amt > 0){
             toggleFightOn("This is the path you have chosen.");
             this.health -= amt;
             player.attack(10);
             document.querySelector(".enemy-health").innerHTML = "HP: " + this.health;
-            player.pure = false;
         }
         else{
-            toggleFightOff("\'...I see...\' Kodama was defeated!");
+            toggleFightOff("The guardian Tengu was defeated!");
             advanceScene();
             this.dialogueIndex = this.dialogue.length;
         }
     },
     reason(){
         toggleFightOff("You have shown mercy. You may pass.");
-        advanceScene();
-        this.dialogueIndex = this.dialogue.length;
+        setTimeout(() => {
+            advanceScene();
+            this.dialogueIndex = this.dialogue.length;
+        }, 800);
     },
     playerHealed(){
         toggleFightOn("Prepare yourself!");
-        player.attack(20);
+        player.attack(10);
     },
     playerRan(){
         toggleFightOn("THERE IS NO ESCAPE!");
+        player.attack(15);
         player.runAttempts = "Not able to run";
         document.querySelector(".run").innerHTML = "Run attempts left: " + player.runAttempts;
     }
@@ -387,7 +422,7 @@ let chamber = {
         if (this.dialogueIndex < this.dialogue.length) {
             return;
         }
-        player.pure = false;
+
         advanceScene();
     }
 }
@@ -444,7 +479,6 @@ function toggleEnemy(){
 
 function togglePlayer(){
     let playerSection = document.querySelector(".player-section")
-
     let check = playerSection.classList.contains("hidden");
     if (check){
         playerSection.classList.remove("hidden");
@@ -477,8 +511,7 @@ function toggleFightOn(message){
 }
 
 function toggleFightOff(message){
-    document.querySelector(".dialogue").innerHTML = message;
-    document.querySelector(".next-btn").classList.remove("hidden");
+    alert(message);
 }
 
 function toggleAll(){
@@ -494,6 +527,8 @@ function runScene(card) {
 }
 
 function runSceneWithEnemy(card) {    
+    // ensure the enemyHasActed flag is reset when entering a new enemy scene
+    card.enemyHasActed = false;
     runScene(card);
     toggleEnemy();
 }

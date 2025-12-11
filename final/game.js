@@ -173,7 +173,8 @@ let opening = {
 
 let kitsune = {
     bg: 'village.jpg',
-    img: 'inari-kistune-large.jpg',
+    img: 'rsz_inari-kistune.jpg',
+    alt: "picture of a kitsune",
     name: 'Kitsune',
     health: "???",
     dialogue: kistuneInteractions.map(i => i.text),
@@ -190,6 +191,7 @@ let kitsune = {
 let pretender = {
     bg: 'dungeon-bg-large.jpg',
     img: 'kappa-large.svg',
+    alt: "Picture of a kappa named Shiro",
     name: 'Shiro',
     health: '100',
     enemyHasActed: false,
@@ -248,7 +250,7 @@ let pretender = {
 let oni = {
     bg: 'dungeon-bg-large.jpg',
     img: 'oni-large.jpg',
-    alt: '',
+    alt: 'Picture of a violent oni',
     name: 'Oni',
     health: '150',
     enemyHasActed: false,
@@ -304,8 +306,8 @@ let oni = {
 
 let ally = {
     bg: 'dungeon-bg-large.jpg',
-    img: 'kodama-large.png',
-    alt: '',
+    img: 'rsz_kodama.png',
+    alt: 'Picture of a Kodama',
     name: 'Kodama',
     health: '20',
     enemyHasActed: false,
@@ -356,8 +358,8 @@ let ally = {
 
 let boss = {
     bg: 'darknest-dungeon-ruins-door.jpg',
-    img: 'tengu-large.jpg',
-    alt: '',
+    img: 'tengu.jpg',
+    alt: 'Picture of the Tengu Guardian',
     name: 'Tengu',
     health: '200',
     enemyHasActed: false,
